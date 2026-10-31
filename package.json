@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "clean:reports": "rimraf allure-report allure-results && mkdirp allure-report allure-results",
-    "generate:reports": "npx allure generate ./allure-results --clean",
+    "generate:reports": "npx allure generate ./allure-results --clean -o ./allure-report",
     "open:reports": "npx allure open ./allure-report",
+    "serve:reports": "npx allure serve ./allure-results",
     "pretest": "npm run clean:reports",
-    "posttest": "npx allure serve ./allure-results",
-    "script:to:run": "npx playwright test pom",
-    "test": "npx playwright test pom && npm run posttest"
+    "posttest": "npm run generate:reports",
+    "test": "npx playwright test pom"
   },
   "keywords": [],
   "author": "",
